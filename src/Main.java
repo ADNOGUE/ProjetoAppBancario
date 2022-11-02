@@ -20,6 +20,7 @@ public class Main {
                 break;
             case 2:
                 new Sacar().realizarOperacao();
+
                 break;
             case 3:
                 new Depositar().realizarOperacao();
@@ -33,7 +34,7 @@ public class Main {
             case 6:
                 new ConsultarSaldo().realizarOperacao();
                 break;
-            case default:
+            default:
                 System.out.println("OPÇÃO INVALIDA");
                 break;
         }
