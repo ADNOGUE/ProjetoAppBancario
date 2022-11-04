@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Main {
+public class Aplicacao {
     public static void main(String[] args) {
 
         int operacao;
@@ -10,7 +10,7 @@ public class Main {
         System.out.println("<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>");
         System.out.println("        BEM VINDO AO BANCO ITAU-LETSCODE      ");
         System.out.println("<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>");
-        System.out.println("INFORME A OPERAÇÃO DESEJADA:");
+        System.out.println("Voce dese:");
         System.out.printf("1-ABIR CONTA, 2-SACAR, 3-DEPOSITAR \n4-TRANSFERIR, 5-INVESTIR, 6-CONSULTAR SALDO \n7 - ENCERRAR");
         operacao = a.nextInt();
 
