@@ -4,19 +4,20 @@ public class Main {
     public static void main(String[] args) {
 
         int operacao;
-
+        int numconta = 0;
         Scanner a = new Scanner(System.in);
 
         System.out.println("<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>");
         System.out.println("        BEM VINDO AO BANCO ITAU-LETSCODE      ");
         System.out.println("<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>");
         System.out.println("INFORME A OPERAÇÃO DESEJADA:");
-        System.out.printf("1-ABIR CONTA, 2-SACAR, 3-DEPOSITAR \n4-TRANSFERIR, 5-INVESTIR, 6-CONSULTAR SALDO \n");
+        System.out.printf("1-ABIR CONTA, 2-SACAR, 3-DEPOSITAR \n4-TRANSFERIR, 5-INVESTIR, 6-CONSULTAR SALDO \n7 - ENCERRAR");
         operacao = a.nextInt();
 
         switch (operacao) {
             case 1:
-                new AbrirConta().realizarOperacao();
+                numconta = numconta + 1;
+                new AbrirConta().realizarOperacao(numconta);
                 break;
             case 2:
                 new Sacar().realizarOperacao();
@@ -34,6 +35,8 @@ public class Main {
             case 6:
                 new ConsultarSaldo().realizarOperacao();
                 break;
+            case 7:
+                 break;
             default:
                 System.out.println("OPÇÃO INVALIDA");
                 break;
