@@ -4,15 +4,24 @@ import java.math.BigDecimal;
 
 public class ContaCorrente extends Conta{
 
-    private BigDecimal saldo;
+     private BigDecimal saldo;
 
-    public ContaCorrente(String numero, String tipoConta, BigDecimal saldo, Pessoa pessoa) {
-        super(numero, tipoConta, saldo, pessoa);
+    public ContaCorrente(String numero, BigDecimal saldo, Pessoa pessoa) {
+        super(numero, saldo, pessoa);
+    }
+
+    public ContaCorrente(String numero, BigDecimal saldo) {
+        super(numero, saldo);
+    }
+
+    @Override
+    public void depositar(BigDecimal valor) {
+        super.adicionarDinheiro(valor);
     }
 
 
-    public void depositar(BigDecimal valor, BigDecimal taxa) {
-        this.saldo = super.investir(valor, taxa);
-    }
+
+
+
 
 }
