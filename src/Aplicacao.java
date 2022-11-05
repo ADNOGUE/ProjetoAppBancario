@@ -10,11 +10,11 @@ public class Aplicacao {
         System.out.println("<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>");
         System.out.println("        BEM VINDO AO BANCO ITAU-LETSCODE      ");
         System.out.println("<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>");
-        System.out.println("Voce dese:");
-        System.out.printf("1-ABIR CONTA, 2-SACAR, 3-DEPOSITAR \n4-TRANSFERIR, 5-INVESTIR, 6-CONSULTAR SALDO \n7 - ENCERRAR");
+        System.out.println("Voce deseja:");
+        System.out.printf("1-ABRIR CONTA, 2-SACAR, 3-DEPOSITAR \n4-TRANSFERIR, 5-INVESTIR, 6-CONSULTAR SALDO \n7 - ENCERRAR");
         operacao = a.nextInt();
 
-        switch (operacao) {
+        /*switch (operacao) {
             case 1:
                 numconta = numconta + 1;
                 new AbrirConta().realizarOperacao(numconta);
@@ -40,7 +40,7 @@ public class Aplicacao {
             default:
                 System.out.println("OPÇÃO INVALIDA");
                 break;
-        }
+        }*/
 
 
     }
