@@ -2,30 +2,10 @@ import java.math.BigDecimal;
 import java.util.Objects;
 import java.util.Scanner;
 
-import Modelagem.*;
-
 public class AbrirConta {
 
-    public static Conta AbriConta(String numero, String tipoConta, BigDecimal saldo, Pessoa pessoa) {
-
-        if("corrente".equals(tipoConta)){
-            return new ContaCorrente(
-                    numero, tipoConta, saldo, pessoa);
-        } else if ("investimento".equals(tipoConta)) {
-            return  new ContaInvestimento(numero, tipoConta, saldo, pessoa);
-        } else if ("poupanca".equals(tipoConta)) {
-            return  new ContaPoupanca(numero, tipoConta, saldo, pessoa);
-        }
-        else {
-            return null;
-        }
-
-
-    }
-}
-
-    //Scanner scanner;
-    /*public void realizarOperacao(int numConta){
+    Scanner scanner;
+    public void realizarOperacao(int numConta){
 
         this.scanner = new Scanner(System.in);
         System.out.println("Vamos abrir a sua conta!");
@@ -42,26 +22,40 @@ public class AbrirConta {
         System.out.println("AbrirConta.Conta aberta com sucesso, seu novo numero de conta é: " +numConta);
 
 
-    }*/
+    }
 
+    public static class Conta {
 
+        private  String titular;
+        private String tipoPessoa;
+        private Integer tipoConta;
+        private Integer numeroDaConta;
+        private BigDecimal saldoCC;
+        private BigDecimal saldoCP;
+        private BigDecimal saldoCI;
 
-
-
-
-
-        /*public Conta(String titular, String tipoPessoa, Integer tipoConta, Integer numeroDaConta) {
+        public Conta(String titular, String tipoPessoa, Integer tipoConta, Integer numeroDaConta) {
 
             this.setTitular(titular);
             this.setTipoPessoa(tipoPessoa);
             this.setTipoConta(tipoConta);
             this.setNumeroDaConta(numeroDaConta);
-        }*/
+        }
 
 
+        public String getTitular() {
+            return titular;
+        }
 
+        public void setTitular(String titular) {
+            this.titular = titular;
+        }
 
-      /*  public void setTipoPessoa(String tipoPessoa) {
+        public String getTipoPessoa() {
+            return tipoPessoa;
+        }
+
+        public void setTipoPessoa(String tipoPessoa) {
             if (tipoPessoa.equals("PF") || tipoPessoa.equals("PJ")) {
                 this.tipoPessoa = tipoPessoa;
             } else {
@@ -69,10 +63,13 @@ public class AbrirConta {
                 //        break;
             }
 
-        }*/
+        }
 
+        public Integer getTipoConta() {
+            return tipoConta;
+        }
 
-       /* public void setTipoConta(Integer tipoConta) {
+        public void setTipoConta(Integer tipoConta) {
 
             if (tipoPessoa == "PJ") {
                 if (tipoConta.equals(1) || tipoConta.equals(2)) {
@@ -89,9 +86,41 @@ public class AbrirConta {
                     //                break;
                 }
             }
-        }*/
+        }
 
-/*
+
+        public Integer getNumeroDaConta() {
+            return numeroDaConta;
+        }
+
+        public void setNumeroDaConta(Integer numeroDaConta) {
+            this.numeroDaConta = numeroDaConta;
+        }
+
+        public BigDecimal getSaldoCC() {
+            return saldoCC;
+        }
+
+        public void setSaldoCC(BigDecimal saldoCC) {
+            this.saldoCC = saldoCC;
+        }
+
+        public BigDecimal getSaldoCP() {
+            return saldoCP;
+        }
+
+        public void setSaldoCP(BigDecimal saldoCP) {
+            this.saldoCP = saldoCP;
+        }
+
+        public BigDecimal getSaldoCI() {
+            return saldoCI;
+        }
+
+        public void setSaldoCI(BigDecimal saldoCI) {
+            this.saldoCI = saldoCI;
+        }
+
         @Override
         public boolean equals(Object o) {
             if (this == o) return true;
@@ -105,8 +134,17 @@ public class AbrirConta {
             return Objects.hash(titular, tipoPessoa, tipoConta, numeroDaConta, saldoCC, saldoCP, saldoCI);
         }
 
+     //   public static void sacar(BigDecimal saque) {
+     //       if (this.saldoCC < saque) {
+     //           System.out.println("Saldo insuficiente");
+      //      }
+      //       else{this.saldoCC -= saque;
+     //           }
+     //      }
 
+    //    public static void depositar(BigDecimal deposito) {
+      //           this.saldoCC += deposito;
+      //          }
 
-*/
-
-
+    }
+}
