@@ -47,7 +47,6 @@ public abstract class Conta {
         }
     }
 
-    public abstract void depositar(BigDecimal valor);
 
     public void transferir(BigDecimal valor){
         if (this.saldo.compareTo(valor) != -1) {
@@ -78,4 +77,6 @@ public abstract class Conta {
     public void consultarSaldo() {
         System.out.printf("\nO Saldo de sua conta é de R$%.2f\n", saldo);
     }
+
+    public abstract void depositar(BigDecimal deposito);
 }

@@ -1,6 +1,7 @@
 import Modelagem.*;
 
 import java.math.BigDecimal;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class Aplicacao {
@@ -53,6 +54,15 @@ public class Aplicacao {
         Modelagem.Conta conta = null;
         int numconta = 1;
 
+        if (tipoPessoa.equals("PF") && tipoConta.equals("CI") ) {
+            saldo = saldo.multiply(BigDecimal.valueOf(1.015));
+        }
+        else if ((tipoPessoa.equals("PJ") && tipoConta.equals("CI"))){
+             saldo = saldo.multiply(BigDecimal.valueOf(1.035));
+        }else if ((tipoPessoa.equals("PF") && tipoConta.equals("CP"))){
+             saldo = saldo.multiply(BigDecimal.valueOf(1.000));
+        }
+
         switch (tipoConta) {
             case "CC":
                 conta = new ContaCorrente(numconta, saldo, pessoa);
@@ -84,11 +94,24 @@ public class Aplicacao {
                 case 1:
                     System.out.printf("Informe o valor do saque: ");
                     BigDecimal saque = a.nextBigDecimal();
+                    if (tipoPessoa.equals("PJ")) {
+                        BigDecimal txsaque = saque.multiply(BigDecimal.valueOf(1.050));
+                        saque.subtract(txsaque);
+                    }
                     conta.sacar(saque);
                     break;
                 case 2:
                     System.out.printf("Informe o valor do deposito: ");
                     BigDecimal deposito = a.nextBigDecimal();
+                    if (tipoPessoa.equals("PF") && tipoConta.equals("CI") ) {
+                        deposito = deposito.multiply(BigDecimal.valueOf(1.015));
+                    }
+                    else if ((tipoPessoa.equals("PJ") && tipoConta.equals("CI"))){
+                        deposito = deposito.multiply(BigDecimal.valueOf(1.035));
+                    }else if ((tipoPessoa.equals("PF") && tipoConta.equals("CP"))){
+                        deposito = deposito.multiply(BigDecimal.valueOf(1.000));
+                    }
+
                     conta.depositar(deposito);
                     break;
                 case 3:
