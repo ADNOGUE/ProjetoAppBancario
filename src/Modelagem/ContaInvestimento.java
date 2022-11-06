@@ -8,20 +8,21 @@ public class ContaInvestimento extends Conta{
         super(numconta,saldo, pessoa);
     }
 
-    public ContaInvestimento(int numconta,BigDecimal saldo) {
-        super(numconta,saldo);
-    }
-
+    BigDecimal taxa;
     @Override
     public void depositar(BigDecimal valor) {
 
-       // if (tipoPessoa = PF) {
-        BigDecimal valorDepositado = valor.multiply(BigDecimal.valueOf(1.015));
-       // }
-       // else (tipoPessoa = PJ){
-       //     public BigDecimal valorDepositado =
-       //             valor.multiply(BigDecimal.valueOf(1.035));
-       // }
+        if (pessoa instanceof PessoaFisica) {
+           taxa = BigDecimal.valueOf(1.015);
+        }
+        else{
+                if (pessoa instanceof PessoaJuridica) {
+                    taxa = BigDecimal.valueOf(1.035);
+                }
+            };
+
+        BigDecimal valorDepositado = valor.multiply(taxa);
+
         super.adicionarDinheiro(valorDepositado);
     }
 }

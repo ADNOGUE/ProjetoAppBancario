@@ -11,6 +11,7 @@ public class Aplicacao {
         int operacao;
         String encerrar;
 
+
         Scanner a = new Scanner(System.in);
 
         System.out.println("<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>");
@@ -28,23 +29,27 @@ public class Aplicacao {
 
         Modelagem.Pessoa pessoa = null;
 
-        if (tipoPessoa.equals("PF")) {
-            System.out.printf("Informe seu CPF: ");
-            String cpf = a.next();
-            pessoa = new PessoaFisica(nome, sexo, endereco, cpf);
-            System.out.println("Informe o tipo de conta que quer abrir: ");
-            System.out.printf("CC - Conta Corrente, CI - Conta Investimento, CP - Conta Popupança \n Tipo: ");
-            tipoConta = a.next().toUpperCase();
-
-        } else {
-            if (tipoPessoa.equals("PJ")) {
+        switch (tipoPessoa){
+             case "PF":
+                System.out.printf("Informe seu CPF: ");
+                String cpf = a.next();
+                pessoa = new PessoaFisica(nome, sexo, endereco, cpf);
+                System.out.println("Informe o tipo de conta que quer abrir: ");
+                System.out.printf("CC - Conta Corrente, CI - Conta Investimento, CP - Conta Popupança \n Tipo: ");
+                tipoConta = a.next().toUpperCase();
+                break;
+            case "PJ":
                 System.out.printf("Informe seu CNPJ:");
                 String cnpj = a.next();
                 pessoa = new PessoaJuridica(nome, endereco, cnpj);
                 System.out.println("Informe o tipo de conta que quer abrir: ");
                 System.out.println("CC - Conta Corrente, CI - Conta Investimento \n Tipo: ");
                 tipoConta = a.next().toUpperCase();
-            }
+                break;
+        default:
+                System.out.println("OPÇÃO INVALIDA");
+                break;
+
         }
 
         System.out.printf("Informe o saldo que irá iniciar sua conta: ");
@@ -58,10 +63,10 @@ public class Aplicacao {
                 conta = new ContaCorrente(numconta, saldo, pessoa);
                 break;
             case "CI":
-                conta = new ContaPoupanca(numconta, saldo, pessoa);
+                conta = new ContaInvestimento(numconta, saldo, pessoa);
                 break;
             case "CP":
-                conta = new ContaInvestimento(numconta, saldo, pessoa);
+                conta = new ContaPoupanca(numconta, saldo, pessoa);
                 break;
             default:
                 System.out.println("OPÇÃO INVALIDA");
@@ -90,6 +95,9 @@ public class Aplicacao {
                     System.out.printf("Informe o valor do deposito: ");
                     BigDecimal deposito = a.nextBigDecimal();
                     conta.depositar(deposito);
+                    System.out.println("Deposito realizado com Sucesso!!");
+                    System.out.printf("Valor depositado: R$%.2f\n",deposito);
+                    conta.consultarSaldo();
                     break;
                 case 3:
                     System.out.printf("Informe o valor da transferencia: ");
@@ -113,9 +121,9 @@ public class Aplicacao {
                     System.out.println("OPÇÃO INVALIDA");
                     break;
             }
-            System.out.print("\nEncerrar? (S/N): ");
+            System.out.print("\nDigite S se deseja continuar  ");
             encerrar = a.next().toUpperCase();
-        }while(encerrar.equals("N"));
+        }while(encerrar.equals("S"));
 
 
     }

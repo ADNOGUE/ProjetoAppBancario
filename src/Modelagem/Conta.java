@@ -6,7 +6,7 @@ public abstract class Conta {
 
     private int numconta;
     private BigDecimal saldo;
-    private Pessoa pessoa;
+    Pessoa pessoa;
 
     public Conta(int numconta, BigDecimal saldo, Pessoa pessoa) {
         this.numconta = numconta;
