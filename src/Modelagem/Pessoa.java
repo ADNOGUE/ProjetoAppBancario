@@ -25,10 +25,14 @@ public abstract class Pessoa {
     }
 
     public void setSexo(String sexo) {
-        if (sexo.equals("f") ||
-            sexo.equals("m")){
+        if (sexo.equals("F") ||
+            sexo.equals("M")){
             this.sexo = sexo;
         }
+        else {
+            System.out.println("Sexo invalido!");
+        }
+
     }
 
     public void setEndereco(String endereco) {
