@@ -4,14 +4,12 @@ import java.math.BigDecimal;
 
 public class ContaPoupanca extends Conta{
 
-    private BigDecimal saldo;
-
-    public ContaPoupanca(String numero,  BigDecimal saldo, Pessoa pessoa) {
-        super(numero, saldo, pessoa);
+    public ContaPoupanca(int numconta, BigDecimal saldo, Pessoa pessoa) {
+        super(numconta,saldo, pessoa);
     }
 
-    public ContaPoupanca(String numero,  BigDecimal saldo) {
-        super(numero, saldo);
+    public ContaPoupanca(int numconta, BigDecimal saldo) {
+        super(numconta,saldo);
     }
 
     public void depositar(BigDecimal valor) {
