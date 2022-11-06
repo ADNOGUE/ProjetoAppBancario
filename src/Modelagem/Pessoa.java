@@ -1,6 +1,6 @@
 package Modelagem;
 
-public class Pessoa {
+public abstract class Pessoa {
 
     private String nome;
     private String sexo;
@@ -18,30 +18,17 @@ public class Pessoa {
         this.setEndereco(endereco);
     }
 
-
-    public String getNome() {
-        return nome;
-    }
-
     public void setNome(String nome) {
         if (nome != null){
             this.nome = nome;
         }
     }
 
-    public String getSexo() {
-        return sexo;
-    }
-
     public void setSexo(String sexo) {
-        if (sexo == "f" ||
-            sexo == "m"){
+        if (sexo.equals("f") ||
+            sexo.equals("m")){
             this.sexo = sexo;
         }
-    }
-
-    public String getEndereco() {
-        return endereco;
     }
 
     public void setEndereco(String endereco) {

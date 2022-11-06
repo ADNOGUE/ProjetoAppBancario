@@ -1,7 +1,11 @@
 package Modelagem;
 
+import java.math.BigDecimal;
+
 public class PessoaFisica extends Pessoa {
 
+    private final BigDecimal TX_POUPANCA = BigDecimal.valueOf(1.01);
+    private final BigDecimal TX_INVEST = BigDecimal.valueOf(1.015);
     private String cpf;
 
     public PessoaFisica(String nome, String sexo, String endereco,String cpf) {
@@ -12,10 +16,6 @@ public class PessoaFisica extends Pessoa {
     public PessoaFisica(String nome, String endereco,String cpf) {
         super(nome,endereco);
         this.cpf = cpf;
-    }
-
-    public String getCpf() {
-        return cpf;
     }
 
     public void setCpf(String cpf) {
@@ -36,4 +36,5 @@ public class PessoaFisica extends Pessoa {
             return (true);
         }
     }
+
 }
