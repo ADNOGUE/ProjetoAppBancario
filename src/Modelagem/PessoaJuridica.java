@@ -36,4 +36,8 @@ public class PessoaJuridica extends Pessoa {
         }
     }
 
+    @Override
+    public BigDecimal getTaxa() {
+        return TX_INVEST;
+    }
 }

@@ -1,5 +1,7 @@
 package Modelagem;
 
+import java.math.BigDecimal;
+
 public abstract class Pessoa {
 
     private String nome;
@@ -12,6 +14,7 @@ public abstract class Pessoa {
         this.setEndereco(endereco);
       //  return Pessoa;
     }
+    public abstract BigDecimal getTaxa();
 
     public Pessoa(String nome,  String endereco) {
         this.setNome(nome);

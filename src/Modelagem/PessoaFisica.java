@@ -38,4 +38,8 @@ public class PessoaFisica extends Pessoa {
         }
     }
 
+    @Override
+    public BigDecimal getTaxa() {
+        return TX_POUPANCA;
+    }
 }
