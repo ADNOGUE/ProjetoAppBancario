@@ -10,9 +10,15 @@ public class ContaPoupanca extends Conta{
 
 
     public void depositar(BigDecimal valor) {
-        BigDecimal valorDepositado =
-                valor.multiply(BigDecimal.valueOf(1.01));
+        try {
+            BigDecimal valorDepositado =
+                    valor.multiply(BigDecimal.valueOf(1.01));
 
-        super.adicionarDinheiro(valorDepositado);
+            super.adicionarDinheiro(valorDepositado);
+        }
+        catch (ValidacaoException e){
+            System.out.println(e.getMessage());
+        }
+
     }
 }

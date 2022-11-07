@@ -16,8 +16,16 @@ public abstract class Conta {
 
 
 
-    protected void adicionarDinheiro(BigDecimal valor) {
-        this.saldo = saldo.add(valor);
+    protected void adicionarDinheiro(BigDecimal valor) throws ValidacaoException{
+
+        if(valor.compareTo(BigDecimal.ZERO) > 0 ){
+            this.saldo = saldo.add(valor);
+            System.out.println("Deposito realizado com Sucesso!!");
+            System.out.printf("Valor depositado: R$%.2f\n",valor);
+            consultarSaldo();
+        }
+        else
+            throw new ValidacaoException("Valor nao permitido!");
     }
 
     @Override

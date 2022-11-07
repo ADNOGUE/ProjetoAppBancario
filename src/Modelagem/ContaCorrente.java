@@ -12,7 +12,12 @@ public class ContaCorrente extends Conta{
 
     @Override
     public void depositar(BigDecimal valor) {
-        super.adicionarDinheiro(valor);
+        try {
+            super.adicionarDinheiro(valor);
+        }
+        catch (ValidacaoException e){
+            System.out.println(e.getMessage());
+        }
     }
 
 
