@@ -100,9 +100,7 @@ public class Aplicacao {
                     System.out.printf("Informe o valor do deposito: ");
                     BigDecimal deposito = a.nextBigDecimal();
                     conta.depositar(deposito);
-                    System.out.println("Deposito realizado com Sucesso!!");
-                    System.out.printf("Valor depositado: R$%.2f\n",deposito);
-                    conta.consultarSaldo();
+
                     break;
                 case 3:
                     System.out.printf("Informe o valor da transferencia: ");
