@@ -7,15 +7,19 @@ public class PessoaJuridica extends Pessoa {
     private final BigDecimal TX_INVEST = BigDecimal.valueOf(3.5);
     private String cnpj;
 
-    public PessoaJuridica(String nome, String endereco,String cpf) {
+    public PessoaJuridica(String nome, String endereco,String cnpj) {
         super(nome,endereco);
-        this.cnpj = cnpj;
+        this.setCnpj(cnpj);
     }
 
     public void setCnpj(String cnpj) {
 
         if (isCnpj(cnpj)) {
             this.cnpj = cnpj;
+        }
+        else {
+            System.out.println("CNPJ inválido!");
+            System.exit(0);
         }
     }
 
