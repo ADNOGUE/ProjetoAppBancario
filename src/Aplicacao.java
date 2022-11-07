@@ -3,6 +3,9 @@ import Modelagem.*;
 import java.math.BigDecimal;
 import java.util.Locale;
 import java.util.Scanner;
+import Modelagem.Pessoa;
+import Modelagem.Conta;
+import java.security.Timestamp;
 
 public class Aplicacao {
 
@@ -11,6 +14,7 @@ public class Aplicacao {
         String tipoConta = null;
         int operacao;
         String encerrar;
+
 
         Scanner a = new Scanner(System.in);
 
@@ -27,32 +31,38 @@ public class Aplicacao {
         System.out.printf("Informe se a conta será de PF ou PJ: ");
         String tipoPessoa = a.next().toUpperCase();
 
-        Modelagem.Pessoa pessoa = null;
+        Pessoa pessoa = null;
 
-        if (tipoPessoa.equals("PF")) {
-            System.out.printf("Informe seu CPF: ");
-            String cpf = a.next();
-            pessoa = new PessoaFisica(nome, sexo, endereco, cpf);
-            System.out.println("Informe o tipo de conta que quer abrir: ");
-            System.out.printf("CC - Conta Corrente, CI - Conta Investimento, CP - Conta Popupança \n Tipo: ");
-            tipoConta = a.next().toUpperCase();
-
-        } else {
-            if (tipoPessoa.equals("PJ")) {
+        switch (tipoPessoa){
+             case "PF":
+                System.out.printf("Informe seu CPF: ");
+                String cpf = a.next();
+                pessoa = new PessoaFisica(nome, sexo, endereco, cpf);
+                System.out.println("Informe o tipo de conta que quer abrir: ");
+                System.out.printf("CC - Conta Corrente, CI - Conta Investimento, CP - Conta Popupança \n Tipo: ");
+                tipoConta = a.next().toUpperCase();
+                break;
+            case "PJ":
                 System.out.printf("Informe seu CNPJ:");
                 String cnpj = a.next();
                 pessoa = new PessoaJuridica(nome, endereco, cnpj);
                 System.out.println("Informe o tipo de conta que quer abrir: ");
                 System.out.println("CC - Conta Corrente, CI - Conta Investimento \n Tipo: ");
                 tipoConta = a.next().toUpperCase();
-            }
-        }
+                break;
+        default:
+                System.out.println("OPÇÃO INVALIDA");
+                System.exit(0);
+         }
 
         System.out.printf("Informe o saldo que irá iniciar sua conta: ");
         BigDecimal saldo = a.nextBigDecimal();
 
-        Modelagem.Conta conta = null;
-        int numconta = 1;
+        Conta conta = null;
+        long numconta = System.currentTimeMillis();
+
+
+
 
         if (tipoPessoa.equals("PF") && tipoConta.equals("CI") ) {
             saldo = saldo.multiply(BigDecimal.valueOf(1.015));
@@ -68,14 +78,14 @@ public class Aplicacao {
                 conta = new ContaCorrente(numconta, saldo, pessoa);
                 break;
             case "CI":
-                conta = new ContaPoupanca(numconta, saldo, pessoa);
+                conta = new ContaInvestimento(numconta, saldo, pessoa);
                 break;
             case "CP":
-                conta = new ContaInvestimento(numconta, saldo, pessoa);
+                conta = new ContaPoupanca(numconta, saldo, pessoa);
                 break;
             default:
                 System.out.println("OPÇÃO INVALIDA");
-                break;
+                System.exit(0);
         }
 
         do {
@@ -113,6 +123,7 @@ public class Aplicacao {
                     }
 
                     conta.depositar(deposito);
+
                     break;
                 case 3:
                     System.out.printf("Informe o valor da transferencia: ");
@@ -130,15 +141,13 @@ public class Aplicacao {
                 case 6:
                     System.out.println("Dados da Conta: " + conta.toString());
                     break;
-                case 7:
-                    break;
                 default:
                     System.out.println("OPÇÃO INVALIDA");
-                    break;
+                    System.exit(0);
             }
-            System.out.print("\nEncerrar? (S/N): ");
+            System.out.print("\nDigite S se deseja continuar  ");
             encerrar = a.next().toUpperCase();
-        }while(encerrar.equals("N"));
+        }while(encerrar.equals("S"));
 
 
     }

@@ -4,23 +4,28 @@ import java.math.BigDecimal;
 
 public abstract class Conta {
 
-    private int numconta;
+    private long numconta;
     private BigDecimal saldo;
-    private Pessoa pessoa;
+    Pessoa pessoa;
 
-    public Conta(int numconta, BigDecimal saldo, Pessoa pessoa) {
+    public Conta(long numconta, BigDecimal saldo, Pessoa pessoa) {
         this.numconta = numconta;
         this.saldo = saldo;
         this.pessoa = pessoa;
     }
 
-    public Conta(int numconta, BigDecimal saldo) {
-        this.numconta = numconta;
-        this.saldo = saldo;
-         }
 
-    protected void adicionarDinheiro(BigDecimal valor) {
-        this.saldo = saldo.add(valor);
+
+    protected void adicionarDinheiro(BigDecimal valor) throws ValidacaoException{
+
+        if(valor.compareTo(BigDecimal.ZERO) > 0 ){
+            this.saldo = saldo.add(valor);
+            System.out.println("Deposito realizado com Sucesso!!");
+            System.out.printf("Valor depositado: R$%.2f\n",valor);
+            consultarSaldo();
+        }
+        else
+            throw new ValidacaoException("Valor nao permitido!");
     }
 
     @Override

@@ -10,17 +10,18 @@ public class PessoaFisica extends Pessoa {
 
     public PessoaFisica(String nome, String sexo, String endereco,String cpf) {
         super(nome,sexo,endereco);
-        this.cpf = cpf;
+        this.setCpf(cpf);
     }
 
-    public PessoaFisica(String nome, String endereco,String cpf) {
-        super(nome,endereco);
-        this.cpf = cpf;
-    }
 
     public void setCpf(String cpf) {
         if (isCpf(cpf)) {
             this.cpf = cpf;
+        }
+        else {
+            System.out.println("CPF inválido !");
+            System.exit(0);
+
         }
     }
 

@@ -9,13 +9,17 @@ public class PessoaJuridica extends Pessoa {
 
     public PessoaJuridica(String nome, String endereco,String cnpj) {
         super(nome,endereco);
-        this.cnpj = cnpj;
+        this.setCnpj(cnpj);
     }
 
     public void setCnpj(String cnpj) {
 
         if (isCnpj(cnpj)) {
             this.cnpj = cnpj;
+        }
+        else {
+            System.out.println("CNPJ inválido!");
+            System.exit(0);
         }
     }
 
