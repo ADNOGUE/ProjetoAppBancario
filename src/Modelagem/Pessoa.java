@@ -31,6 +31,7 @@ public abstract class Pessoa {
         }
         else {
             System.out.println("Sexo invalido!");
+            System.exit(0);
         }
 
     }

@@ -2,6 +2,9 @@ import Modelagem.*;
 
 import java.math.BigDecimal;
 import java.util.Scanner;
+import Modelagem.Pessoa;
+import Modelagem.Conta;
+import java.security.Timestamp;
 
 public class Aplicacao {
 
@@ -27,7 +30,7 @@ public class Aplicacao {
         System.out.printf("Informe se a conta será de PF ou PJ: ");
         String tipoPessoa = a.next().toUpperCase();
 
-        Modelagem.Pessoa pessoa = null;
+        Pessoa pessoa = null;
 
         switch (tipoPessoa){
              case "PF":
@@ -48,15 +51,17 @@ public class Aplicacao {
                 break;
         default:
                 System.out.println("OPÇÃO INVALIDA");
-                break;
-
-        }
+                System.exit(0);
+         }
 
         System.out.printf("Informe o saldo que irá iniciar sua conta: ");
         BigDecimal saldo = a.nextBigDecimal();
 
-        Modelagem.Conta conta = null;
-        int numconta = 1;
+        Conta conta = null;
+        long numconta = System.currentTimeMillis();
+
+
+
 
         switch (tipoConta) {
             case "CC":
@@ -70,7 +75,7 @@ public class Aplicacao {
                 break;
             default:
                 System.out.println("OPÇÃO INVALIDA");
-                break;
+                System.exit(0);
         }
 
         do {
@@ -115,11 +120,9 @@ public class Aplicacao {
                 case 6:
                     System.out.println("Dados da Conta: " + conta.toString());
                     break;
-                case 7:
-                    break;
                 default:
                     System.out.println("OPÇÃO INVALIDA");
-                    break;
+                    System.exit(0);
             }
             System.out.print("\nDigite S se deseja continuar  ");
             encerrar = a.next().toUpperCase();

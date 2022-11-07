@@ -4,20 +4,17 @@ import java.math.BigDecimal;
 
 public abstract class Conta {
 
-    private int numconta;
+    private long numconta;
     private BigDecimal saldo;
     Pessoa pessoa;
 
-    public Conta(int numconta, BigDecimal saldo, Pessoa pessoa) {
+    public Conta(long numconta, BigDecimal saldo, Pessoa pessoa) {
         this.numconta = numconta;
         this.saldo = saldo;
         this.pessoa = pessoa;
     }
 
-    public Conta(int numconta, BigDecimal saldo) {
-        this.numconta = numconta;
-        this.saldo = saldo;
-         }
+
 
     protected void adicionarDinheiro(BigDecimal valor) {
         this.saldo = saldo.add(valor);
