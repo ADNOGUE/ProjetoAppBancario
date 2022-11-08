@@ -14,66 +14,70 @@ public abstract class Conta {
         this.pessoa = pessoa;
     }
 
-
-
-    protected void adicionarDinheiro(BigDecimal valor) throws ValidacaoException{
-
-        if(valor.compareTo(BigDecimal.ZERO) > 0 ){
-            this.saldo = saldo.add(valor);
-            System.out.println("Deposito realizado com Sucesso!!");
-            System.out.printf("Valor depositado: R$%.2f\n",valor);
-            consultarSaldo();
+    protected void adicionarDinheiro(BigDecimal valor) throws ValoresException{
+        if(valor.compareTo(BigDecimal.ZERO) <= 0 ){
+            throw new ValoresException("Valor nao permitido!");
         }
-        else
-            throw new ValidacaoException("Valor nao permitido!");
+        this.saldo = saldo.add(valor);
+        System.out.println("Deposito realizado com Sucesso!!");
+        System.out.printf("Valor depositado: R$%.2f\n",valor);
+        consultarSaldo();
+
     }
 
     @Override
     public String toString() {
-        String sb = "Dados da Conta: \n" + "numero=" + numconta + '\n' +
-                "saldo=" + saldo +
-                '\n';
-        return sb;
+        return "Dados da Conta: \n" + "Número da Conta = " + numconta + '\n' +
+                "Saldo Atual = " + saldo + '\n';
     }
 
-    public void sacar(BigDecimal valor){
-        if (this.saldo.compareTo(valor) != -1) {
-            if (pessoa instanceof PessoaJuridica){
-                BigDecimal valorsacado = valor.multiply(BigDecimal.valueOf(0.005)).add(valor);
-                this.saldo = saldo.subtract(valorsacado);
-            }else {
-                this.saldo = saldo.subtract(valor);
-            }
-            System.out.println("Saque realizado com Sucesso!!");
-            System.out.printf("Valor sacado: R$%.2f\n",valor);
-            consultarSaldo();}
-        else{
-        System.out.println("Saldo insuficiente");
+    public void sacar(BigDecimal valor) throws ValoresException {
+        if (valor.compareTo(BigDecimal.ZERO) <= 0){
+            throw new ValoresException("Valor nao permitido!");
         }
-    }
-
-
-    public void transferir(BigDecimal valor){
-        if (this.saldo.compareTo(valor) != -1) {
-            if (pessoa instanceof PessoaJuridica){
-                BigDecimal valorsacado = valor.multiply(BigDecimal.valueOf(0.005)).add(valor);
-                this.saldo = saldo.subtract(valorsacado);
-            }else {
-                this.saldo = saldo.subtract(valor);
-            }
-            System.out.println("Transferência realizada com Sucesso!!");
-            System.out.printf("Valor transferido: R$%.2f\n",valor);
-            consultarSaldo();
+        if (this.saldo.compareTo(valor) < 0) {
+            throw new ValoresException("Saldo Insuficiente!");
         }
-        else{
-            System.out.println("Saldo insuficiente");
-        }
-    }
-
-    public void investir(BigDecimal valor){
-        if (this.saldo.compareTo(valor) != -1) {
+        if (pessoa instanceof PessoaJuridica){
+            BigDecimal valorsacado = valor.multiply(pessoa.getTaxaSaqueTransf());
+            this.saldo = saldo.subtract(valorsacado);
+        }else {
             this.saldo = saldo.subtract(valor);
         }
+        System.out.println("Saque realizado com Sucesso!!");
+        System.out.printf("Valor sacado: R$%.2f\n",valor);
+        consultarSaldo();
+    }
+
+    public void transferir(BigDecimal valor) throws ValoresException {
+        if (valor.compareTo(BigDecimal.ZERO) <= 0){
+            throw new ValoresException("Valor nao permitido!");
+        }
+        if (this.saldo.compareTo(valor) < 0) {
+            throw new ValoresException("Saldo Insuficiente!");
+        }
+
+        if (pessoa instanceof PessoaJuridica){
+            BigDecimal valorsacado = valor.multiply(pessoa.getTaxaSaqueTransf());
+            this.saldo = saldo.subtract(valorsacado);
+        }else {
+            this.saldo = saldo.subtract(valor);
+        }
+        System.out.println("Transferência realizada com Sucesso!!");
+        System.out.printf("Valor transferido: R$%.2f\n",valor);
+        consultarSaldo();
+     }
+
+    public void investir(BigDecimal valor) throws ValoresException {
+        if (valor.compareTo(BigDecimal.ZERO) <= 0){
+            throw new ValoresException("Valor nao permitido!");
+        }
+        if (this.saldo.compareTo(valor) < 0) {
+            throw new ValoresException("Saldo Insuficiente!");
+        }
+
+        this.saldo = saldo.subtract(valor);
+
         System.out.println("Investimento realizado com Sucesso!!");
         System.out.printf("Valor investido: R$%.2f\n",valor);
         consultarSaldo();
