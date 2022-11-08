@@ -72,9 +72,6 @@ public abstract class Conta {
         if (valor.compareTo(BigDecimal.ZERO) <= 0){
             throw new ValoresException("Valor nao permitido!");
         }
-        if (this.saldo.compareTo(valor) < 0) {
-            throw new ValoresException("Saldo Insuficiente!");
-        }
 
         this.saldo = saldo.add(valor);
 
