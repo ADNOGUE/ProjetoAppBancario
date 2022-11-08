@@ -9,7 +9,7 @@ public class ContaPoupanca extends Conta{
     }
 
 
-    public void depositar(BigDecimal valor) {
+    public void investir(BigDecimal valor) {
         try {
             BigDecimal valorDepositado =
                     valor.multiply(pessoa.getTaxaPoupanca());

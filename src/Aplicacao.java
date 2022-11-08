@@ -119,12 +119,6 @@ public class Aplicacao {
                 System.exit(0);
         }
         operacoes(conta);
-
-        //gambiarra rs
-        if (!encerrar.equals("S")) {
-            System.exit(0);
-        }
-
     }
 
     private static void operacoes(Conta conta) {
@@ -169,6 +163,8 @@ public class Aplicacao {
                     case 6:
                         System.out.println(conta.toString());
                         break;
+                    case 7:
+                        System.exit(0);
                     default:
                         System.out.println("OPÇÃO INVALIDA");
                         System.exit(0);
@@ -180,6 +176,8 @@ public class Aplicacao {
             System.out.print("\nDigite S se deseja continuar:  ");
             encerrar = a.next().toUpperCase();
         }while(encerrar.equals("S"));
+
+        System.exit(0);
 
     }
 }
