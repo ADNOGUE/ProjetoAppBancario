@@ -5,43 +5,26 @@ import java.math.BigDecimal;
 public abstract class Pessoa {
 
     private String nome;
-    private String sexo;
     private String endereco;
 
-    public Pessoa(String nome, String sexo, String endereco) {
-        this.setNome(nome);
-        this.setSexo(sexo);
-        this.setEndereco(endereco);
-      //  return Pessoa;
-    }
-    public abstract BigDecimal getTaxa();
-
-    public Pessoa(String nome,  String endereco) {
+    public Pessoa(String nome, String endereco) throws ValidacaoException {
         this.setNome(nome);
         this.setEndereco(endereco);
     }
 
-    public void setNome(String nome) {
-        if (nome != null){
-            this.nome = nome;
+    public abstract BigDecimal getTaxaSaqueTransf();
+    public abstract BigDecimal getTaxaPoupanca();
+    public abstract BigDecimal getTaxaInvestimento();
+
+    public void setNome(String nome) throws ValidacaoException {
+        if (nome.isBlank()){
+            throw new ValidacaoException("Campo Nome é Obrigatório!");
         }
     }
 
-    public void setSexo(String sexo) {
-        if (sexo.equals("F") ||
-            sexo.equals("M")){
-            this.sexo = sexo;
-        }
-        else {
-            System.out.println("Sexo invalido!");
-            System.exit(0);
-        }
-
-    }
-
-    public void setEndereco(String endereco) {
-        if (endereco != null) {
-            this.endereco = endereco;
+    public void setEndereco(String endereco) throws ValidacaoException {
+        if (endereco.isBlank()){
+            throw new ValidacaoException("Campo Endereço é Obrigatório!");
         }
     }
 }

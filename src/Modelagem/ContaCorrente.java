@@ -8,14 +8,12 @@ public class ContaCorrente extends Conta{
         super(numconta,saldo, pessoa);
     }
 
-
-
     @Override
     public void depositar(BigDecimal valor) {
         try {
             super.adicionarDinheiro(valor);
         }
-        catch (ValidacaoException e){
+        catch (ValoresException e){
             System.out.println(e.getMessage());
         }
     }

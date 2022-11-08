@@ -12,11 +12,11 @@ public class ContaPoupanca extends Conta{
     public void depositar(BigDecimal valor) {
         try {
             BigDecimal valorDepositado =
-                    valor.multiply(pessoa.getTaxa());
+                    valor.multiply(pessoa.getTaxaPoupanca());
 
             super.adicionarDinheiro(valorDepositado);
         }
-        catch (ValidacaoException e){
+        catch (ValoresException e){
             System.out.println(e.getMessage());
         }
 

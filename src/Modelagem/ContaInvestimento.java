@@ -12,20 +12,11 @@ public class ContaInvestimento extends Conta{
     @Override
     public void depositar(BigDecimal valor) {
         try {
-            if (pessoa instanceof PessoaFisica) {
-                taxa = BigDecimal.valueOf(1.015);
-            } else {
-                if (pessoa instanceof PessoaJuridica) {
-                    taxa = BigDecimal.valueOf(1.035);
-                }
-            }
-            ;
-
-            BigDecimal valorDepositado = valor.multiply(taxa);
+            BigDecimal valorDepositado = valor.multiply(pessoa.getTaxaInvestimento());
 
             super.adicionarDinheiro(valorDepositado);
         }
-        catch (ValidacaoException e){
+        catch (ValoresException e){
             System.out.println(e.getMessage());
         }
     }
