@@ -19,8 +19,8 @@ public abstract class Conta {
             throw new ValoresException("Valor nao permitido!");
         }
         this.saldo = saldo.add(valor);
-        System.out.println("Deposito realizado com Sucesso!!");
-        System.out.printf("Valor depositado: R$%.2f\n",valor);
+        System.out.println("Investimento realizado com Sucesso!!");
+        System.out.printf("Valor investido: R$%.2f\n",valor);
         consultarSaldo();
 
     }
@@ -28,7 +28,7 @@ public abstract class Conta {
     @Override
     public String toString() {
         return "Dados da Conta: \n" + "Número da Conta = " + numconta + '\n' +
-                "Saldo Atual = " + saldo + '\n';
+                "Saldo Atual = R$ " + saldo + '\n';
     }
 
     public void sacar(BigDecimal valor) throws ValoresException {
@@ -68,18 +68,15 @@ public abstract class Conta {
         consultarSaldo();
      }
 
-    public void investir(BigDecimal valor) throws ValoresException {
+    public void depositar (BigDecimal valor) throws ValoresException {
         if (valor.compareTo(BigDecimal.ZERO) <= 0){
             throw new ValoresException("Valor nao permitido!");
         }
-        if (this.saldo.compareTo(valor) < 0) {
-            throw new ValoresException("Saldo Insuficiente!");
-        }
 
-        this.saldo = saldo.subtract(valor);
+        this.saldo = saldo.add(valor);
 
-        System.out.println("Investimento realizado com Sucesso!!");
-        System.out.printf("Valor investido: R$%.2f\n",valor);
+        System.out.println("Depósito realizado com Sucesso!!");
+        System.out.printf("Valor depositado: R$%.2f\n",valor);
         consultarSaldo();
     }
 
@@ -87,5 +84,5 @@ public abstract class Conta {
         System.out.printf("\nO Saldo de sua conta é de R$%.2f\n", saldo);
     }
 
-    public abstract void depositar(BigDecimal deposito);
+    public abstract void investir (BigDecimal deposito);
 }

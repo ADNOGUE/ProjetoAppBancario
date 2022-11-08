@@ -10,7 +10,7 @@ public class ContaInvestimento extends Conta{
 
     BigDecimal taxa;
     @Override
-    public void depositar(BigDecimal valor) {
+    public void investir(BigDecimal valor) {
         try {
             BigDecimal valorDepositado = valor.multiply(pessoa.getTaxaInvestimento());
 
