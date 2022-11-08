@@ -9,7 +9,7 @@ public class ContaCorrente extends Conta{
     }
 
     @Override
-    public void depositar(BigDecimal valor) {
+    public void investir(BigDecimal valor) {
         try {
             super.adicionarDinheiro(valor);
         }
