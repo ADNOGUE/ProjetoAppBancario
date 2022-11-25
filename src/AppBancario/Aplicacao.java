@@ -1,13 +1,20 @@
-import Modelagem.*;
+package AppBancario;
+
+import AppBancario.entidades.pessoa.Pessoa;
+import AppBancario.entidades.pessoa.PessoaFisica;
+import AppBancario.entidades.pessoa.PessoaJuridica;
+import AppBancario.exceptions.CpfCnpjException;
+import AppBancario.exceptions.ValidacaoException;
+import AppBancario.exceptions.ValoresException;
+import AppBancario.service.ContaService;
 
 import java.math.BigDecimal;
 import java.util.Scanner;
-import Modelagem.Pessoa;
-import Modelagem.Conta;
 
 
 public class Aplicacao {
     static Scanner a = new Scanner(System.in);
+
     static String encerrar;
 
     public static void main(String[] args) {
@@ -32,11 +39,10 @@ public class Aplicacao {
 
         }
     }
-
     private void abrirConta() throws ValidacaoException, CpfCnpjException, ValoresException {
         String tipoConta = null;
         Pessoa pessoa = null;
-        Conta conta = null;
+        ContaService conta = null;
 
         System.out.println("<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>");
         System.out.println("        BEM VINDO AO BANCO ITAU-LETSCODE      ");
@@ -104,9 +110,9 @@ public class Aplicacao {
 
         long numconta = System.currentTimeMillis();
 
-        switch (tipoConta) {
+ /*       switch (tipoConta) {
             case "CC":
-                conta = new ContaCorrente(numconta, saldo, pessoa);
+                conta = new ContaService(numconta, saldo, pessoa);
                 break;
             case "CI":
                 conta = new ContaInvestimento(numconta, saldo, pessoa);
@@ -119,9 +125,9 @@ public class Aplicacao {
                 System.exit(0);
         }
         operacoes(conta);
-    }
+   */ }
 
-    private static void operacoes(Conta conta) {
+    private static void operacoes(ContaService conta) {
         int operacao;
         do {
             System.out.println("\nOperações:");
@@ -170,8 +176,8 @@ public class Aplicacao {
                         System.exit(0);
                 }
             }catch (ValoresException e) {
-                    System.out.println(e.getMessage() + "\n" +
-                    "Entre com os dados novamente.");
+                System.out.println(e.getMessage() + "\n" +
+                        "Entre com os dados novamente.");
             }
             System.out.print("\nDigite S se deseja continuar:  ");
             encerrar = a.next().toUpperCase();

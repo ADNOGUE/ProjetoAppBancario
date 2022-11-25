@@ -1,4 +1,6 @@
-package Modelagem;
+package AppBancario.entidades.pessoa;
+
+import AppBancario.exceptions.ValidacaoException;
 
 import java.math.BigDecimal;
 

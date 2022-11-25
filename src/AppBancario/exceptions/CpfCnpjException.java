@@ -1,4 +1,4 @@
-package Modelagem;
+package AppBancario.exceptions;
 
 public class CpfCnpjException extends Exception{
     public CpfCnpjException(String message) {

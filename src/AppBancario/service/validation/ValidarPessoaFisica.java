@@ -1,19 +1,17 @@
-package Modelagem;
+package AppBancario.service.validation;
 
-import java.math.BigDecimal;
+import AppBancario.entidades.pessoa.PessoaFisica;
+import AppBancario.exceptions.CpfCnpjException;
+import AppBancario.exceptions.ValidacaoException;
 
-public class PessoaFisica extends Pessoa {
+public class ValidarPessoaFisica implements ValidarPessoa<PessoaFisica>{
 
-    private final BigDecimal TX_SAQUETRANSF = BigDecimal.valueOf(1.00);
-    private final BigDecimal TX_POUPANCA = BigDecimal.valueOf(1.01);
-    private final BigDecimal TX_INVEST = BigDecimal.valueOf(1.015);
-    private String cpf;
-    private String sexo;
 
-    public PessoaFisica(String nome, String sexo, String endereco,String cpf) throws CpfCnpjException, ValidacaoException {
-        super(nome,endereco);
-        this.setSexo(sexo);
-        this.setCpf(cpf);
+
+    @Override
+    public void validarDocumento(PessoaFisica pessoa) {
+        pessoa.getCpf();
+
     }
 
     public void setSexo(String sexo) throws ValidacaoException {
@@ -43,16 +41,4 @@ public class PessoaFisica extends Pessoa {
         }
     }
 
-    @Override
-    public BigDecimal getTaxaSaqueTransf() { return TX_SAQUETRANSF; }
-
-    @Override
-    public BigDecimal getTaxaPoupanca() {
-        return TX_POUPANCA;
-    }
-
-    @Override
-    public BigDecimal getTaxaInvestimento() {
-        return TX_INVEST;
-    }
 }

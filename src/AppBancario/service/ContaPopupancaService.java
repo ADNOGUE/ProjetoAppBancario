@@ -1,16 +1,11 @@
-package Modelagem;
+package AppBancario.service;
 
 import java.math.BigDecimal;
 
-public class ContaPoupanca extends Conta{
+public class ContaPopupancaService extends ContaService{
 
-    public ContaPoupanca(long numconta, BigDecimal saldo, Pessoa pessoa) {
-        super(numconta,saldo, pessoa);
-    }
-
-
-    public void investir(BigDecimal valor) {
-        try {
+   public void investir(BigDecimal valor) {
+/*        try {
             BigDecimal valorDepositado =
                     valor.multiply(pessoa.getTaxaPoupanca());
 
@@ -18,7 +13,7 @@ public class ContaPoupanca extends Conta{
         }
         catch (ValoresException e){
             System.out.println(e.getMessage());
-        }
-
+       }
+*/
     }
 }

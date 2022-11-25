@@ -1,20 +1,13 @@
-package Modelagem;
+package AppBancario.service;
+
+import AppBancario.exceptions.ValoresException;
 
 import java.math.BigDecimal;
 
-public abstract class Conta {
-
-    private long numconta;
+public abstract class ContaService {
     private BigDecimal saldo;
-    Pessoa pessoa;
-
-    public Conta(long numconta, BigDecimal saldo, Pessoa pessoa) {
-        this.numconta = numconta;
-        this.saldo = saldo;
-        this.pessoa = pessoa;
-    }
-
-    protected void adicionarDinheiro(BigDecimal valor) throws ValoresException{
+    private long numconta;
+    protected void adicionarDinheiro(BigDecimal valor) throws ValoresException {
         if(valor.compareTo(BigDecimal.ZERO) <= 0 ){
             throw new ValoresException("Valor nao permitido!");
         }
@@ -38,7 +31,7 @@ public abstract class Conta {
         if (this.saldo.compareTo(valor) < 0) {
             throw new ValoresException("Saldo Insuficiente!");
         }
-        if (pessoa instanceof PessoaJuridica){
+/*        if (pessoa instanceof PessoaJuridica){
             BigDecimal valorsacado = valor.multiply(pessoa.getTaxaSaqueTransf());
             this.saldo = saldo.subtract(valorsacado);
         }else {
@@ -47,7 +40,7 @@ public abstract class Conta {
         System.out.println("Saque realizado com Sucesso!!");
         System.out.printf("Valor sacado: R$%.2f\n",valor);
         consultarSaldo();
-    }
+*/    }
 
     public void transferir(BigDecimal valor) throws ValoresException {
         if (valor.compareTo(BigDecimal.ZERO) <= 0){
@@ -57,16 +50,16 @@ public abstract class Conta {
             throw new ValoresException("Saldo Insuficiente!");
         }
 
-        if (pessoa instanceof PessoaJuridica){
+/*        if (pessoa instanceof PessoaJuridica){
             BigDecimal valorsacado = valor.multiply(pessoa.getTaxaSaqueTransf());
             this.saldo = saldo.subtract(valorsacado);
         }else {
             this.saldo = saldo.subtract(valor);
         }
-        System.out.println("Transferência realizada com Sucesso!!");
+*/        System.out.println("Transferência realizada com Sucesso!!");
         System.out.printf("Valor transferido: R$%.2f\n",valor);
         consultarSaldo();
-     }
+    }
 
     public void depositar (BigDecimal valor) throws ValoresException {
         if (valor.compareTo(BigDecimal.ZERO) <= 0){

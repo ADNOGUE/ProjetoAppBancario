@@ -1,4 +1,7 @@
-package Modelagem;
+package AppBancario.entidades.pessoa;
+
+import AppBancario.exceptions.CpfCnpjException;
+import AppBancario.exceptions.ValidacaoException;
 
 import java.math.BigDecimal;
 
@@ -42,5 +45,8 @@ public class PessoaJuridica extends Pessoa {
     @Override
     public BigDecimal getTaxaInvestimento() {
         return TX_INVEST;
+    }
+
+    public void getCnpj() {
     }
 }

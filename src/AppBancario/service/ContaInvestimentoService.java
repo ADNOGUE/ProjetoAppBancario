@@ -1,17 +1,11 @@
-package Modelagem;
+package AppBancario.service;
 
 import java.math.BigDecimal;
 
-public class ContaInvestimento extends Conta{
+public class ContaInvestimentoService extends ContaService{
 
-    public ContaInvestimento(long numconta,BigDecimal saldo, Pessoa pessoa) {
-        super(numconta,saldo, pessoa);
-    }
-
-    BigDecimal taxa;
-    @Override
     public void investir(BigDecimal valor) {
-        try {
+ /*       try {
             BigDecimal valorDepositado = valor.multiply(pessoa.getTaxaInvestimento());
 
             super.adicionarDinheiro(valorDepositado);
@@ -19,5 +13,5 @@ public class ContaInvestimento extends Conta{
         catch (ValoresException e){
             System.out.println(e.getMessage());
         }
-    }
+ */   }
 }
